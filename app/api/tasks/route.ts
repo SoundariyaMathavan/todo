@@ -1,6 +1,8 @@
 import { type NextRequest, NextResponse } from "next/server"
 import { DatabaseService } from "@/lib/database-service"
 
+export const dynamic = "force-dynamic"
+
 async function authenticateRequest(request: NextRequest) {
   const token = request.headers.get("authorization")?.replace("Bearer ", "")
 

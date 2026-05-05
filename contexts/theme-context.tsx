@@ -33,7 +33,14 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     const storedTheme = localStorage.getItem("theme")
     if (storedTheme) {
-      setTheme(JSON.parse(storedTheme))
+      try {
+        const parsedTheme = JSON.parse(storedTheme)
+        setTheme(parsedTheme)
+      } catch (error) {
+        if (storedTheme === "light" || storedTheme === "dark") {
+          setTheme({ ...defaultTheme, mode: storedTheme })
+        }
+      }
     }
   }, [])
 

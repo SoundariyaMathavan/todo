@@ -1,6 +1,8 @@
 import { type NextRequest, NextResponse } from "next/server"
 import { DatabaseService } from "@/lib/database-service"
 
+export const dynamic = "force-dynamic"
+
 export async function POST(request: NextRequest) {
   try {
     const { email, password } = await request.json()
